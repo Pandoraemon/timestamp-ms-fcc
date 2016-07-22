@@ -16,6 +16,6 @@
     "url": "https://github.com/Pandoraemon/timestamp-ms-fcc/issues"
   },
   "engines":{
-    "node": "v0.10.42"
+    "node": "5.9.1"
   }
 }
