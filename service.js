@@ -3,8 +3,23 @@ var app = express();
 
 app.set('port', (process.env.PORT || 5000));
 
-app.get('/', function(req, res){
-    res.send('<h1>hello World</h1>');
+app.get('/:time', function(req, res){
+  var date = req.params.time;
+  if (/^[0-9]*$/.test(date))
+  {
+    date = parseInt(date);
+  }
+  date = new Date(date);
+  var result = {};
+  if (date == "Invalid Date")
+    {
+      result = {"unix" : null, "date": null};
+    }
+  else
+    {
+      result = {"unix" : date.valueOf(), "date": date.toDateString()};
+    }
+  res.send(JSON.stringify(result));
 });
 
 var server = app.listen(app.get('port'), function(){
